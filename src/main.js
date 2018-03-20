@@ -1,7 +1,13 @@
 const nodemailer = require('nodemailer');
-const waitMS = 5000;
 
-console.log('Credentials obtained, sending message...');
+const sendDate = new Date(2018, 3, 20, 19, 0, 0, 0);
+const waitMS = sendDate.getTime() - Date.now();
+var newDate = new Date(waitMS);
+
+if (waitMS < 0) {
+    console.log('That time has already passed.');
+    return process.exit(1)
+}
 
 let transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email', 
@@ -34,6 +40,7 @@ var sendMail = function() {
     transporter.sendMail(message, sendMailCallback);
 }
 
-console.log('waiting for %d ms', waitMS);
+console.log('waiting for %d minutes and %d seconds', newDate.getMinutes(), newDate.getSeconds()); 
 
-setTimeout(sendMail, waitMS);
+setTimeout(sendMail, waitMS); //this is async
+
