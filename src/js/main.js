@@ -1,3 +1,5 @@
+'use strict';
+
 const nodemailer = require('nodemailer');
 const {ipcMain, app, BrowserWindow} = require('electron');
 const path = require('path');
@@ -16,14 +18,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-var message = {
-    from: 'dms test <dms_test@fake.domain>',
-    to: 'fake recipient <fake_recipient@fake.domain>', 
-    subject: 'DMS Test', 
-    text: 'Testing the DMS!',
-    html: 'Testing the <strong>DMS!</strong>'
-};
-
 function sendMailCallback(err, info) {
     if (err) {
         console.log('Error occured when sending. ' + error.message);
@@ -35,12 +29,8 @@ function sendMailCallback(err, info) {
     return;
 };
 
-function sendMail() {
-    transporter.sendMail(message, sendMailCallback);
-}
-
 function createWindow() {
-    win = new BrowserWindow({width: 600, height: 800});
+    var win = new BrowserWindow({width: 600, height: 800});
     win.loadURL(url.format({
         pathname: path.join(__dirname, '../html/index.html'), 
         protocol: 'file', 
@@ -57,5 +47,9 @@ ipcMain.on('new_task', (event, arg) => {
 
     console.log('sending in %d days, %d minutes, and %d seconds', waitTime.getDate(), waitTime.getMinutes(), waitTime.getSeconds());
 
-    setTimeout(sendMail, waitMS); //this is async
+    var message = arg.message; 
+
+    setTimeout(function(){
+       transporter.sendMail(message, sendMailCallback);
+    }, waitMS);
 });

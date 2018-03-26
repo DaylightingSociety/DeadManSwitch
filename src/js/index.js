@@ -1,16 +1,23 @@
 const {ipcRenderer} = require('electron');
 
-var dateField = document.body.querySelector('form input[type="datetime-local"]');
-var submit = document.body.querySelector('button');
+var dateField = document.body.querySelector('input[type="datetime-local"]');
+var from      = document.body.querySelector('input[name="from"]');
+var to        = document.body.querySelector('input[name="to"');
+var subject   = document.body.querySelector('input[name="subject"]');
+var text      = document.body.querySelector('input[name="text"]');
+var submit    = document.body.querySelector('button');
 
 submit.addEventListener("click", () => {
     const sendDate = new Date(dateField.value);
-    const task = {
+    const task = { //is this secure?
         sendDate: sendDate, 
-        from: 'test', 
-        to: 'test',
-        subject: 'hey', 
-        text: 'what\'s up'
+        message: {
+            from: from.value, 
+            to: to.value,
+            subject: subject.value, 
+            text: text.value,
+            html: "<strong>no support for html yet!</strong>"
+        }
     };
     
     ipcRenderer.send('new_task', task);
