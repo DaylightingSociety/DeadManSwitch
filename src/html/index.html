@@ -9,10 +9,15 @@
     <input type="text" name="text" placeholder="email text">
     <input type="text" name="username" placeholder="username">
     <input type="text" name="password" placeholder="password">
+    <input type="hidden" name="domain" placeholder="smtp domain">
+    <input type="hidden" name="port" placeholder="smtp port">
+    <input type="hidden" id="secure">
+    <label for="secure" style="display: none;">Use TLS?</label> 
     <select>
         <option value="riseup">Riseup</option>
         <option value="gmail">Gmail</option>
         <option value="ethereal">Ethereal</option>
+        <option value="custom">Custom</option>
     </select>
     <button>submit</button>
 </body>

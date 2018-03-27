@@ -9,6 +9,10 @@ var submit = document.body.querySelector('button');
 var config = document.body.querySelector('select');
 var username = document.body.querySelector('input[name="username"]');
 var password = document.body.querySelector('input[name="password"]');
+var domain = document.body.querySelector('input[name="domain"]');
+var port = document.body.querySelector('input[name="port"]');
+var secure = document.body.querySelector('input[id="secure"]');
+var secureLabel = document.body.querySelector('label');
 
 config.addEventListener("change", function() {
     if(config.value === "ethereal") {
@@ -17,6 +21,18 @@ config.addEventListener("change", function() {
     } else {
         username.setAttribute('type', 'text');
         password.setAttribute('type', 'text');
+    }
+
+    if(config.value === "custom") {
+        domain.setAttribute('type', 'text');
+        port.setAttribute('type', 'text');
+        secure.setAttribute('type', 'checkbox');
+        secureLabel.setAttribute('style', 'display: inline;');
+    } else {
+        domain.setAttribute('type', 'hidden');
+        port.setAttribute('type', 'hidden');
+        secure.setAttribute('type', 'hidden');
+        secureLabel.setAttribute('style', 'display: none;');
     }
 });
 
