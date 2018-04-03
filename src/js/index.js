@@ -1,4 +1,8 @@
+'use strict';
+
 const {ipcRenderer} = require('electron');
+window.$ = window.jQuery = require('jquery');
+window.bootstrap = require('bootstrap');
 
 var dateField = document.body.querySelector('input[type="datetime-local"]');
 var from = document.body.querySelector('input[name="from"]');
