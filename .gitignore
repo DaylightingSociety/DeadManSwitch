@@ -1,3 +1,4 @@
 node_modules/*
 *.log
 *.swp
+src/html/checkout_form.html
