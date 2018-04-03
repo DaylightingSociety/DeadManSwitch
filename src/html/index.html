@@ -4,27 +4,109 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
     <title>dms</title>
 </head>
 <body>
-    <input type="datetime-local" name="dateTime">
-    <input type="text" name="from" placeholder="from">
-    <input type="text" name="to" placeholder="to">
-    <input type="text" name="subject" placeholder="subject">
-    <input type="text" name="text" placeholder="email text">
-    <input type="text" name="username" placeholder="username">
-    <input type="text" name="password" placeholder="password">
-    <input type="hidden" name="domain" placeholder="smtp domain">
-    <input type="hidden" name="port" placeholder="smtp port">
-    <input type="hidden" id="secure">
-    <label for="secure" style="display: none;">Use TLS?</label> 
-    <select>
-        <option value="mail">mail.com</option>
-        <option value="riseup">Riseup</option>
-        <option value="gmail">Gmail</option>
-        <option value="ethereal">Ethereal</option>
-        <option value="custom">Custom</option>
-    </select>
-    <button>submit</button>
-</body>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 order-md-1">
+          <h4 class="mb-3">dms</h4>
+
+          <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">From</label>
+                <input type="text" class="form-control" id="from" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid email address is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">To</label>
+                <input type="text" class="form-control" id="to" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid email address is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Subject</label>
+              <input type="text" class="form-control" id="subject" placeholder="" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                  Subject line is required. <!-- is it? -->
+              </div>
+            </div>
+
+           <div class="mb-3">
+               <label for="text">Email text</label>
+               <textarea class="form-control" id="text"></textarea>
+           </div>
+
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="provider">Email provider</label>
+                <select class="custom-select d-block w-100" id="provider">
+                  <option value="mail">mail.com</option>
+                  <option value="riseup">Riseup</option>
+                  <option value="gmail">Gmail</option>
+                  <option value="ethereal">Ethereal</option>
+                  <option value="custom">Custom</option>
+                </select>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username">
+                <div class="invalid-feedback">
+                    <!-- TODO what should go here? -->
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password">
+                <div class="invalid-feedback">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 mb-3">
+                    <label for="domain">SMTP domain</label>
+                    <input type="text" class="form-control" id="domain">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="port">SMTP port</label>
+                    <input type="text" class="form-control" id="port">
+                </div>
+                <div class="form-check col-md-3 mt-5">
+                    <input class="form-check-input" type="checkbox" value="" id="secure">
+                    <label class="form-check-label" for="secure">Use SSL?</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class='col-md-6'>
+                <label for="date">send date</label>
+                <input type='text' class="form-control" id="date">
+              </div>
+              <div class="col-md-6 mt-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 <script src='../js/index.js'></script>
+<script src='../js/bootstrap-datetimepicker.min.js'></script>
+<script src='../../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<script>
+   $(document).ready(function(){
+        $("#date").datetimepicker();
+    });
+</script>
+</body>

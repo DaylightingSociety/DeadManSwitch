@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const {ipcMain, app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
+const jquery = require('jquery');
 
 var sendDate;
 var waitMS;
@@ -29,6 +30,7 @@ function createWindow() {
         protocol: 'file', 
         slashes: true
     }));
+    win.jQuery = jquery;
 }
 
 app.on('ready', createWindow);
