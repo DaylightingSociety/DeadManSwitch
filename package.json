@@ -2,6 +2,10 @@
   "name": "dms",
   "version": "0.0.0",
   "description": "dead-man's switch implemented in electron",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/DaylightingSociety/DeadManSwitch"
+  },
   "main": "./src/js/main.js",
   "scripts": {
     "start": "electron ."
@@ -9,7 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "electron": "^1.8.4",
-    "nodemailer": "^4.6.3"
+    "jquery": "^1.9.1",
+    "nodemailer": "^4.6.3",
+    "popper.js": "^1.14.2"
   }
 }
