@@ -15,7 +15,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "electron": "^1.8.4",
-    "jquery": "^1.12.4",
+    "jquery": "^3.0.0",
     "nodemailer": "^4.6.3",
     "popper.js": "^1.14.2"
   }
