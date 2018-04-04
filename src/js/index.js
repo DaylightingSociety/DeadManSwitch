@@ -4,21 +4,21 @@ const {ipcRenderer} = require('electron');
 window.$ = window.jQuery = require('jquery');
 window.bootstrap = require('bootstrap');
 
-var dateField = document.body.querySelector('input[type="datetime-local"]');
-var from = document.body.querySelector('input[name="from"]');
-var to = document.body.querySelector('input[name="to"');
-var subject = document.body.querySelector('input[name="subject"]');
-var text   = document.body.querySelector('input[name="text"]');
-var submit = document.body.querySelector('button');
-var config = document.body.querySelector('select');
-var username = document.body.querySelector('input[name="username"]');
-var password = document.body.querySelector('input[name="password"]');
-var domain = document.body.querySelector('input[name="domain"]');
-var port = document.body.querySelector('input[name="port"]');
-var secure = document.body.querySelector('input[id="secure"]');
-var secureLabel = document.body.querySelector('label');
+var from = document.getElementById('input[id="from"]');
+var to = document.getElementById('input[id="to"');
+var subject = document.getElementById('input[name="subject"]');
+var text   = document.getElementById('input[name="text"]');
+var submit = document.getElementById('button[id="submit"]');
+var username = document.getElementById('input[name="username"]');
+var password = document.getElementById('input[name="password"]');
+var domain = document.getElementById('input[name="domain"]');
+var port = document.getElementById('input[name="port"]');
+var secure = document.getElementById('input[id="secure"]');
+var secureLabel = document.getElementById('label');
+var dateField = document.getElementById('input[type="datetime-local"]');
 
-config.addEventListener("change", function() {
+
+$('#provider').on("change", function() {
     if(config.value === "ethereal") {
         username.setAttribute('type', 'hidden');
         password.setAttribute('type', 'hidden');
@@ -72,14 +72,14 @@ const riseupConfig = {
 const mailConfig = {
     host: 'smtp.mail.com', 
     port: 465,
-    securee: true, 
+    secure: true, 
     auth: {
         user: '', 
         pass: ''
     }
 };
 
-submit.addEventListener("click", function() {
+$('#submit').on("click", function() {
     const sendDate = new Date(dateField.value);
 
     const task = { //is this secure?
@@ -126,8 +126,6 @@ submit.addEventListener("click", function() {
         default:
             task.config = etherealConfig;
     }
-
-    console.log(task.config);
     
     ipcRenderer.send('new_task', task);
 });
