@@ -56,23 +56,24 @@ const mailConfig = {
 };
 
 $('#submit').on("click", function() {
+    console.log($('#date').text());
     const sendDate = new Date($('#date').val());
 
     const task = { //is this secure?
         sendDate: sendDate, 
           config: {}, 
          message: {
-              from: $('#from').text(), 
-              to: $('#to').text(), 
-              subject: $('#subject').text(), 
-              text: $('#text').text(), 
+              from: $('#from').val(), 
+              to: $('#to').val(), 
+              subject: $('#subject').val(), 
+              text: $('#text').val(), 
         }
     };
     
-    let user = $('#username').text();
-    let pass = $('#password').text();
+    var user = $('#username').val();
+    var pass = $('#password').val();
 
-    switch(config.value) {
+    switch($('#provider').val()) {
         case 'riseup':
             task.config = riseupConfig;
             break;
