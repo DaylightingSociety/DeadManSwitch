@@ -9,6 +9,7 @@ const jquery = require('jquery');
 var sendDate;
 var waitMS;
 var waitTime;
+var task;
 
 function sendMailCallback(err, info) {
     if (err) {
@@ -45,6 +46,10 @@ ipcMain.on('new_task', (event, arg) => {
     console.log('sending in %d days, %d minutes, and %d seconds', waitTime.getDate(), waitTime.getMinutes(), waitTime.getSeconds());
 
     setTimeout(function(){
-       transporter.sendMail(message, sendMailCallback);
+       task = transporter.sendMail(message, sendMailCallback);
     }, waitMS);
+});
+
+ipcMain.on('cancel_task', (event, arg) => {
+    clearInterval(task);
 });

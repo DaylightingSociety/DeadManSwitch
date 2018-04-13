@@ -100,3 +100,7 @@ $('#submit').on("click", function() {
     
     ipcRenderer.send('new_task', task);
 });
+
+$('#cancel').on("click", function() {
+    ipcRenderer.send('cancel_task', null);
+});
