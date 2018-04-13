@@ -5,14 +5,15 @@ window.$ = window.jQuery = require('jquery');
 window.bootstrap = require('bootstrap');
 
 $('#provider').on("change", function() {
+    console.log($('#provider').val());
     if($('#provider').val() === "custom") {
-        $('#domain-wrapper').show();
-        $('#port-wrapper').show();
-        $('#secure-wrapper').show()
+        $('#domain-wrapper').removeClass('d-none');
+        $('#port-wrapper').removeClass('d-none');
+        $('#secure-wrapper').removeClass('d-none');
     } else {
-        $('#domain-wrapper').hide();
-        $('#port-wrapper').hide();
-        $('#secure-wrapper').hide();
+        $('#domain-wrapper').addClass('d-none');
+        $('#port-wrapper').addClass('d-none');
+        $('#secure-wrapper').addClass('d-none');
     }
 });
 

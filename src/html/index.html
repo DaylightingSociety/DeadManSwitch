@@ -11,20 +11,17 @@
     <div class="container py-5">
       <div class="row justify-content-center">
         <div class="col-md-6 order-md-1">
-          <h4 class="mb-3">dms</h4>
 
           <form class="needs-validation" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="from">From</label>
-                <input type="text" class="form-control" id="from" placeholder="" value="" required>
+                <input type="text" class="form-control" id="from" placeholder="From" value="" required>
                 <div class="invalid-feedback">
                   Valid email address is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="to">To</label>
-                <input type="text" class="form-control" id="to" placeholder="" value="" required>
+                <input type="text" class="form-control" id="to" placeholder="To" value="" required>
                 <div class="invalid-feedback">
                   Valid email address is required.
                 </div>
@@ -32,8 +29,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="subject">Subject</label>
-              <input type="text" class="form-control" id="subject" placeholder="" required>
+              <input type="text" class="form-control" id="subject" placeholder="Subject" required>
               <div class="invalid-feedback" style="width: 100%;">
                   Subject line is required. <!-- is it? -->
               </div>
@@ -73,27 +69,37 @@
             </div>
 
             <div class="row">
-                <div class="col-md-5 mb-3" id="domain-wrapper">
+                <div class="col-md-5 mb-3 d-none" id="domain-wrapper">
                     <label for="domain">SMTP domain</label>
                     <input type="text" class="form-control" id="domain">
                 </div>
-                <div class="col-md-4 mb-2" id="port-wrapper">
+                <div class="col-md-4 mb-3 d-none" id="port-wrapper">
                     <label for="port">SMTP port</label>
                     <input type="text" class="form-control" id="port">
                 </div>
-                <div class="form-check col-md-3 mt-5" id="secure-wrapper">
-                    <input class="form-check-input" type="checkbox" value="" id="secure">
-                    <label class="form-check-label" id="secureLabel" for="secure">Use SSL?</label>
+                <div class="col-md-3 mb-3 d-none" id="secure-wrapper">
+                    <label for="secure">Security</label>
+                    <select class="custom-select d-block w-100" id="secure">
+                      <option value="SSL">SSL</option>
+                      <option value="TLS">TLS</option>
+                      <option value="STARTTLS">STARTTLS</option>
+                      <option value="none">none</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
-              <div class='col-md-6'>
+              <div class='col-md-8 mx-auto'>
                 <label for="date">send date</label>
                 <input type='text' class="form-control" id="date">
               </div>
+            </div>
+            <div class="row mt-4">
               <div class="col-md-6 mt-auto">
-                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
               </div>
+                <div class="col-md-6 mt-auto">
+                    <button type="button" id="cancel" class="btn btn-outline-danger btn-block">Cancel</button>
+                </div>
             </div>
             </div>
             </div>
