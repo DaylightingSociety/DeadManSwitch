@@ -1,118 +1,135 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
-    <title>dms</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+  <title>dms</title>
 </head>
 <body>
-    <div class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-md-6 order-md-1">
 
-          <form class="needs-validation" onsubmit="return false" novalidate>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" id="from" placeholder="From" value="" required>
-                <div class="invalid-feedback">
-                  Valid email address is required.
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" id="to" placeholder="To" value="" required>
-                <div class="invalid-feedback">
-                  Valid email address is required.
-                </div>
-              </div>
-            </div>
+<div class="container">
 
-            <div class="mb-3">
-              <input type="text" class="form-control" id="subject" placeholder="Subject" required>
-              <div class="invalid-feedback" style="width: 100%;">
-                  Subject line is required. <!-- is it? -->
-              </div>
-            </div>
-
-           <div class="mb-3">
-               <label for="text">Email text</label>
-               <textarea class="form-control" id="text"></textarea>
-           </div>
-
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="provider">Email provider</label>
-                <select class="custom-select d-block w-100" id="provider">
-                  <option value="mail">mail.com</option>
-                  <option value="riseup">Riseup</option>
-                  <option value="gmail">Gmail</option>
-                  <option value="ethereal">Ethereal</option>
-                  <option value="custom">Custom</option>
-                </select>
-                <div class="invalid-feedback">
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username">
-                <div class="invalid-feedback">
-                    <!-- TODO what should go here? -->
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
-                <div class="invalid-feedback">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-5 mb-3 d-none" id="domain-wrapper">
-                    <label for="domain">SMTP domain</label>
-                    <input type="text" class="form-control" id="domain">
-                </div>
-                <div class="col-md-4 mb-3 d-none" id="port-wrapper">
-                    <label for="port">SMTP port</label>
-                    <input type="text" class="form-control" id="port">
-                </div>
-                <div class="col-md-3 mb-3 d-none" id="secure-wrapper">
-                    <label for="secure">Security</label>
-                    <select class="custom-select d-block w-100" id="secure">
-                      <option value="SSL">SSL</option>
-                      <option value="TLS">TLS</option>
-                      <option value="STARTTLS">STARTTLS</option>
-                      <option value="none">none</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-              <div class='col-md-8 mx-auto'>
-                <label for="date">send date</label>
-                <input type='text' class="form-control" id="date">
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col-md-6 mt-auto">
-                <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
-              </div>
-                <div class="col-md-6 mt-auto">
-                    <button type="button" id="cancel" class="btn btn-outline-danger btn-block">Cancel</button>
-                </div>
-            </div>
-            </div>
-            </div>
-          </form>
-        </div>
+<form class="needs-validation my-5" novalidate>
+  <div class="form-row mb-3">
+    <div class="col-md-12">
+      <label for="to">To</label>
+      <input type="email" class="form-control" id="to" placeholder="recipient@example.com" required>
+      <div class="invalid-feedback">
+        Please provide a valid email.
       </div>
     </div>
+  </div>
+  <div class="form-row mb-3">
+    <div class="col-md-12">
+      <label for="subject">Subject</label>
+      <input type="email" class="form-control" id="to" placeholder="Subject" required>
+      <div class="invalid-feedback">
+        No subject line provided.
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-3">
+    <div class="col-md-12">
+      <label for="text">Text</label>
+      <textarea class="form-control" id="text" required></textarea>
+      <div class="invalid-feedback">
+        No subject line provided.
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-3">
+    <div class="col-md-4">
+      <label for="provider">Email provider</label>
+	  <select class="custom-select d-block w-100" id="provider">
+        <option value="mail">mail.com</option>
+		<option value="riseup">Riseup</option>
+        <option value="gmail">Gmail</option>
+    	<option value="ethereal">Ethereal</option>
+	    <option value="custom">Custom</option>
+  	  </select>
+	  <div class="invalid-feedback">
+	  </div>
+	</div>
+    <div class="col-md-4">
+      <label for="username">Username</label>
+      <input type="email" class="form-control" id="username" placeholder="sender@example.com" required>
+      <div class="invalid-feedback">
+        Please provide a valid email.
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" required>
+      <div class="invalid-feedback">
+        No password provided. 
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-1">
+	<div class="col-md-5 d-none" id="domain-wrapper">
+      <label for="domain">SMTP domain</label>
+	  <input type="text" class="form-control" id="domain">
+	</div>
+	<div class="col-md-4 d-none" id="port-wrapper">
+	  <label for="port">SMTP port</label>
+	  <input type="text" class="form-control" id="port">
+	</div>
+	<div class="col-md-3 d-none" id="secure-wrapper">
+	  <label for="secure">Security</label>
+	  <select class="custom-select d-block w-100" id="secure">
+	    <option value="SSL">SSL</option>
+		<option value="TLS">TLS</option>
+		<option value="STARTTLS">STARTTLS</option>
+		<option value="none">none</option>
+      </select>
+	</div>
+  </div>
+  <div class="form-row mb-3">
+    <div class='col-md-12'>
+      <label for="date">send date</label>
+      <input type='text' class="form-control" id="date" required>
+      <div class="invalid-feedback">
+        Please provide a valid date and time.
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-3">
+    <div class="col-md-6 mt-auto">
+      <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
+	</div>
+	<div class="col-md-6 mt-auto">
+	  <button type="button" id="cancel" class="btn btn-outline-danger btn-block">Cancel</button>
+    </div>
+  </div>
+</form>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    $("#date").datetimepicker();
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
 <script src='../js/index.js'></script>
 <script src='../js/bootstrap-datetimepicker.min.js'></script>
 <script src='../../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
-<script>
-   $(document).ready(function(){
-        $("#date").datetimepicker();
-    });
-</script>
 </body>
+</html>
