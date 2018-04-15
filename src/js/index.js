@@ -5,7 +5,6 @@ window.$ = window.jQuery = require('jquery');
 window.bootstrap = require('bootstrap');
 
 $('#provider').on("change", function() {
-    console.log($('#provider').val());
     if($('#provider').val() === "custom") {
         $('#domain-wrapper').removeClass('d-none');
         $('#port-wrapper').removeClass('d-none');
@@ -56,8 +55,11 @@ const mailConfig = {
     }
 };
 
-$('#submit').on("click", function() {
-    console.log($('#date').text());
+$('form').on('submit', function(event) {
+    if(!($('form').checkValidity())) {
+       return;
+    }
+
     const sendDate = new Date($('#date').val());
 
     const task = { //is this secure?
@@ -97,8 +99,6 @@ $('#submit').on("click", function() {
     task.config.auth.user = user;
     task.config.auth.pass = pass;
 
-    console.log(task);
-    
     ipcRenderer.send('new_task', task);
 });
 
