@@ -14,14 +14,7 @@ var task;
 function sendMailCallback(err, info) {
     if (err) {
         console.log('Error occured when sending. ' + err.message);
-        return process.exit(1);
     }
-
-    console.log('Message sent: %s', info.messageId);
-    if(nodemailer.getTestMessageUrl(info)) {
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-    }
-    return;
 };
 
 function createWindow() {
@@ -43,10 +36,8 @@ ipcMain.on('new_task', (event, arg) => {
     var transporter = nodemailer.createTransport(arg.config);
     var message = arg.message; 
 
-    console.log('sending in %d days, %d minutes, and %d seconds', waitTime.getDate(), waitTime.getMinutes(), waitTime.getSeconds());
-
     setTimeout(function(){
-       task = transporter.sendMail(message, sendMailCallback);
+        task = transporter.sendMail(message, sendMailCallback);
     }, waitMS);
 });
 
