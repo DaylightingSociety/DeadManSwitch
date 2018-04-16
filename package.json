@@ -1,5 +1,6 @@
 {
   "name": "dms",
+  "productName": "dms",
   "version": "0.0.0",
   "description": "dead-man's switch implemented in electron",
   "repository": {
